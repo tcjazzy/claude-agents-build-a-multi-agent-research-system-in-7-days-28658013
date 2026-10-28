@@ -35,4 +35,10 @@ async def run_search_agent(topic: str) -> None:
             print(f"\nDone in {message.num_turns} turns.")
             print(f"Estimated cost: ${message.total_cost_usd:.4f}")
 
-#TODO: Choose a research topic and run your query
+# Research topic: AI's impact on HRIS platforms like Workday and UKG
+if __name__ == "__main__":
+    asyncio.run(
+        run_search_agent(
+            "How AI agents are changing HRIS platforms such as Workday and UKG in 2026"
+        )
+    )
