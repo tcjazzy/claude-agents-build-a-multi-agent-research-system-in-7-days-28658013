@@ -115,6 +115,8 @@ async def run_research(request: str) -> None:
 if __name__ == "__main__":
     asyncio.run(
         run_research(
-            #TODO: Add a question of your choosing.
+            "Does a four-day work week improve outcomes for employers? "
+            "Research the evidence on productivity, employee retention and "
+            "wellbeing, and operating cost, including critiques of the pilots."
         )
     )
