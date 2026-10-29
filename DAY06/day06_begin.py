@@ -254,30 +254,45 @@ def prune_unused_references(report: dict) -> dict:
     ]
     return report
 
+async def run_with_retries(request: str, max_attempts: int = 3) -> dict | None:
+    for attempt in range(1, max_attempts + 1):
+        print(f"\n=== Attempt {attempt} of {max_attempts} ===")
+        report = await run_research(request)
+
+        if report is None:
+            print("Attempt failed: no structured output.")
+            continue
+
+        report = prune_unused_references(report)
+        problems = validate_report(report)
+        if problems:
+            print(f"Attempt failed validation with {len(problems)} problems:")
+            for p in problems:
+                print(f"  - {p}")
+            continue
+
+        print("Attempt succeeded.")
+        return report
+
+    print("All attempts exhausted.")
+    return None
+
 async def main():
     request = (
-        "What does the evidence say about the impact of AI coding "
-        "assistants on software developer productivity and code quality?"
+        "What does the evidence say about pay transparency laws in the US "
+        "and EU: their effect on wages and hiring, where compliance deadlines "
+        "stand, and what HRIS capabilities such as Workday need to support "
+        "them for a multi-state employer with large hourly and seasonal staff?"
     )
-    report = await run_research(request)
+    report = await run_with_retries(request)
 
     if report is None:
-        print("Run failed before producing a report. Nothing saved.")
-        return
-
-    report = prune_unused_references(report)
-
-    problems = validate_report(report)
-    if problems:
-        print("\nValidation failed:")
-        for p in problems:
-            print(f"  - {p}")
-        print("Report NOT saved.")
+        print("No valid report produced. Nothing saved.")
         return
 
     with open("report.md", "w", encoding="utf-8") as f:
         f.write(render_markdown(report))
-    print("\nValidation passed. Report saved to report.md")
+    print("\nReport saved to report.md")
 
 
 if __name__ == "__main__":
