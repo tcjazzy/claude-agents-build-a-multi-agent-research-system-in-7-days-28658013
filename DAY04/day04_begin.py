@@ -115,8 +115,11 @@ async def run_research(request: str) -> None:
 if __name__ == "__main__":
     asyncio.run(
         run_research(
-            "Does a four-day work week improve outcomes for employers? "
-            "Research the evidence on productivity, employee retention and "
-            "wellbeing, and operating cost, including critiques of the pilots."
+            "A sports and entertainment employer runs Workday HCM and staffs "
+            "stadium events with thousands of hourly and seasonal workers. "
+            "Should it keep a best-of-breed UKG workforce management system "
+            "integrated with Workday, or consolidate onto Workday Time Tracking "
+            "and Scheduling? Research hourly and event scheduling capability, "
+            "predictive scheduling compliance, total cost, and implementation risk."
         )
     )

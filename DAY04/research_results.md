@@ -1,19 +1,19 @@
 # Day 4 Research Results: Synthesis and Conflict Resolution
 
-**Question (`day04_begin.py`):** Does a four-day work week improve outcomes for employers? Research the evidence on productivity, employee retention and wellbeing, and operating cost, including critiques of the pilots.
+**Question (`day04_begin.py`):** A sports and entertainment employer runs Workday HCM and staffs stadium events with thousands of hourly and seasonal workers. Should it keep a best-of-breed UKG workforce management (WFM) system integrated with Workday, or consolidate onto Workday Time Tracking and Scheduling? Research hourly and event scheduling capability, predictive scheduling compliance, total cost, and implementation risk.
 
 Run on 2026-10-29. The container has no `ANTHROPIC_API_KEY`, so the steps were done by hand: search (4 topics), then analysis per topic, then synthesis using `SYNTHESIS_AGENT`'s conflict policy:
 
 1. Prefer claims backed by several independent sources.
 2. Prefer newer sources when the facts change over time.
 3. Prefer primary sources over secondary reporting.
-4. If a conflict can't be resolved, show both positions. Never split the difference.
+4. If a conflict can't be resolved, show both positions. Never split the difference or average numbers.
 
 ---
 
 ## Overall picture
 
-For knowledge-work employers that **choose** to adopt a four-day week with no pay cut, the evidence for better **wellbeing and retention** is strong and consistent. The evidence for better **productivity** is weaker: it is mostly self-reported and comes from self-selected firms. For **operating cost**, the one well-documented case where coverage is required (Swedish elder care) shows real added cost, and that trial was ended. The policy pays for itself where output can be reorganized. It costs money where someone has to be physically present for every hour.
+For a Workday shop whose hourly and event workforce is large, seasonal and shift-driven, the evidence favors **keeping a specialist WFM system (UKG) integrated with Workday**. Consolidating onto Workday alone looks better when hourly needs are moderate. Workday's advantage is one data model covering HR and finance. UKG's advantage is depth in scheduling, time and labor forecasting. No source gives independent, platform-specific cost or failure data, so the cost argument rests on advisory estimates, not measurements.
 
 ---
 
@@ -21,12 +21,11 @@ For knowledge-work employers that **choose** to adopt a four-day week with no pa
 
 | # | Conflict | Rule applied | Resolution |
 |---|---|---|---|
-| 1 | **Productivity:** blog coverage claims "40% productivity gains". The Nature Human Behaviour paper (Fan & Schor, 2025) reports only that workers *said* their ability to do their work improved, and outside economist Pedro Gomes says productivity still needs more analysis | Primary over secondary | **Reject the 40% figure.** It can't be traced to the paper. Productivity gains are *self-reported and unproven* |
-| 2 | **How many firms kept the policy (UK 2022 pilot):** sources say 92%, 89%, "nine in ten", and 18 vs 31 made it permanent | Primary over secondary, plus more than one independent source | The best-supported count is **56 of 61 firms continued (≈92%) and 18 made it permanent**. 89% and 31 appear in only one secondary source each. Not averaged |
-| 3 | **"Firms kept it, so it works" vs. "the sample was biased":** advocates point to 90%+ retention. Critics (Constangy, Sanders/KCL, Irish Times) point to volunteer firms, no randomized control, attrition (70 signed up, 44–51 supplied data), and researchers who are also advocates | Unresolvable from the evidence: both sides are factually correct | **Both positions stand.** Retention of the policy is a real result for *volunteer* firms. It does not show what would happen at a typical firm |
-| 4 | **Gothenburg sick leave:** "10% reduction" vs "half the city average" (15 vs 31 days) | Primary/specific data over vague summary | The **specific figure, 15 vs 31 days**, is preferred. The "10%" claim has no source behind it. These measure different things: change over time vs. comparison with other care homes |
-| 5 | **Gothenburg cost:** "+25% staff / +22% gross cost" vs. the trial leader saying the public cost was "half of what we thought" | Unresolvable: different baselines | **Both stand.** The direct cost rose by about 22%. The trial leader's claim counts offsetting savings such as lower sickness absence and unemployment costs. The city ended the trial, which suggests it judged the net cost too high |
-| 6 | **Hours actually cut:** "one day off" vs. an average cut from 38 to 34 hours | Specific over headline | Many firms cut **about 4 hours, not 8**. Read the productivity results with that in mind |
+| 1 | **WFM capability:** Workday markets one platform with scheduling tied to worker profiles and predictive analytics. Several comparisons (People Managing People, JitBase, TechVendorIndex) rate Workday WFM "adequate" and UKG's "strong", citing its Kronos roots | Several independent sources agree | **UKG is deeper for hourly WFM.** This is corroborated across independent comparisons. Workday's strength is real but sits elsewhere: HR, finance and position data in one model |
+| 2 | **Cost:** one Workday-negotiation blog says complex WFM adds **25–40%** to Workday platform cost. A comparison site says UKG's bundled time and attendance is **"materially cheaper"** than Workday plus a separate WFM tool | Unresolvable: no primary pricing, and both claims are secondary | **Both stand. Not averaged.** Each claim comes from a single advisory source. The only reliable answer is quotes for actual headcount, peak event-day volume and pay rules |
+| 3 | **Predictive scheduling compliance:** Workday's own admin guides document predictive scheduling calculations and penalties. A third-party vendor (Cloudapper) says Workday calculates the premium but **does not record whether the employee was actually notified in advance** | Primary over secondary, but the primary docs don't address notice tracking | **Partially resolved.** Premium calculation is confirmed by Workday's documentation. The notice-tracking gap is **plausible but unverified**, since it comes from a competitor. It should be tested in a proof of concept with the Fair Workweek rules for each city where events are held |
+| 4 | **Implementation failure rates:** 32% over budget and 53% late (PeopleStrong, attributed to Gartner 2024), vs. 55% missing budget, schedule or goals (Clearbridge, attributed to Gartner), vs. 55–75% (HRMS World), vs. >75% for ERP | Primary over secondary; definitions differ | **No figure is citable.** None links to a Gartner document, and each defines "failure" differently (over budget vs. missed goals vs. abandoned). The most specific one, **32% over budget / 53% late**, can be used *as a direction* only, with its definition stated. Never quote "70% fail" |
+| 5 | **Event and venue needs:** Humanforce, Shifton and Workforce.com list requirements such as per-zone scheduling, kiosk or GPS clock-ins, separate tracking of vendor and contractor hours, and FLSA blended-rate overtime for staff working several roles. No neutral source says whether Workday or UKG covers them | No independent source | **Kept as requirements, not findings.** These are competitors' marketing claims. They make a useful checklist for a proof of concept, but they are not evidence about either platform |
 
 ---
 
@@ -34,19 +33,23 @@ For knowledge-work employers that **choose** to adopt a four-day week with no pa
 
 | Conclusion | Confidence | Why |
 |---|---|---|
-| Wellbeing improves: lower burnout, better sleep, less fatigue | **High** | Peer-reviewed study of about 2,900 workers in 141 orgs across 6 countries, consistent with the UK pilot, and includes a (small) comparison group |
-| Retention improves: UK pilot reported 57% fewer staff departures and a 65% drop in sick days | **Medium** | Consistent across sources, but self-selected firms and a short trial window |
-| Most volunteer firms keep the policy | **High** for volunteers, **low** for typical firms | Many sources agree, but there is a selection effect |
-| Productivity holds or rises | **Low–medium** | Self-reported, no randomized controls, inflated figures in the press |
-| Cost is neutral where full coverage is required | **Low** (evidence points the other way) | The one detailed coverage-based trial needed 25% more staff and was ended |
+| UKG offers deeper hourly scheduling, time and labor forecasting than Workday | **Medium–high** | Several independent comparisons agree; no primary benchmark |
+| Workday-only is enough when hourly needs are moderate and a single data model is the priority | **Medium** | The same comparison sources support it |
+| The best-of-breed route costs more, or less, than consolidation | **Low** | Conflicting single-source estimates; no published pricing |
+| Workday handles predictive scheduling premiums | **High** | Workday's own documentation |
+| Workday tracks advance-notice delivery for Fair Workweek | **Low / unverified** | Competitor claim only |
+| HCM implementations carry material budget and schedule risk | **Medium** | Many sources agree on the direction; exact rates can't be traced |
 
 ## Gaps
 
-- No randomized controlled trial and no data on firms that dropped out or failed.
-- Iceland's public-sector trials were searched for but not found in this run.
-- Almost no evidence on hourly, shift or frontline workforces beyond Gothenburg. This matters for venue and event operations, where the Gothenburg result is the relevant one.
-- No results beyond about 6–12 months.
+- No independent pricing or 3–5 year TCO model for either option.
+- No platform-specific (Workday or UKG) implementation outcome data.
+- No source covers event-day surge volumes (thousands clocking in within hours) or per-event scheduling and labor costing on either platform.
+- The cost of maintaining the Workday–UKG integration (middleware, payroll sync, failure handling) was not quantified.
+- Union and collective bargaining rules, common for venue staff, are not covered.
+
+**Recommended next step:** Run a scripted proof of concept on both options using a real event-day scenario: peak clock-ins, multi-role blended overtime, a last-minute schedule change in a Fair Workweek city, and contractor hours. Get 5-year quotes from both vendors.
 
 ## Sources
 
-[Entrepreneur – Nature Human Behaviour coverage](https://www.entrepreneur.com/business-news/four-day-workweek-study-employees-happier-more-productive/495019) · [Euronews](https://www.euronews.com/2025/07/21/four-day-work-weeks-are-good-for-employees-mental-and-overall-health-pilots-in-6-countries) · [Nature supplementary material](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41562-025-02259-6/MediaObjects/41562_2025_2259_MOESM2_ESM.pdf) · [Interview Guys (40% claim)](https://blog.theinterviewguys.com/?p=7364) · [The Week](https://theweek.com/business-news/1021197/large-4-day-workweek-trial-was-so-successful-9-in-10-businesses-say-they) · [Time Doctor](https://www.timedoctor.com/blog/companies-retain-four-day-workweek/) · [Safety+Health](https://safetyandhealthmagazine.com/articles/23625-researchers-say-trial-of-4-day-workweeks-shows-positive-results) · [Business Desk](https://www.thebusinessdesk.com/south-west/?p=1695) · [Silicon Canals](https://siliconcanals.com/m-when-british-firms-trialled-a-four-day-week-for-the-same-pay-the-real-surprise-was-not-output-but-the-people-burnout-fell-for-71-percent-of-staff-and-nearly-nine-in-ten-companies-kept-the-shorter-w/) · [Constangy critique](https://constangy.com/employment-labor-insider/u-k-study-on-four-day-workweek-merits-scrutiny) · [Irish Times – Sanders](https://www.irishtimes.com/business/work/2023/07/28/four-day-week-expert-doesnt-want-everyone-working-that-regime-just-yet) · [What Works Wellbeing](https://whatworkswellbeing.org/blog/findings-from-four-day-work-week-trial/) · [Irish Times – Gothenburg](https://www.irishtimes.com/business/work/if-swedes-can-t-make-six-hour-day-work-who-can-1.2925485) · [McKnight's](https://www.mcknights.com/?p=56457) · [Stylist](https://www.stylist.co.uk/life/careers/sweden-employees-trial-experiment-shorter-days-svartedalens-nurses-gothenburg-benefits-productivity-happiness-health/45626)
+[People Managing People – UKG vs Workday](https://peoplemanagingpeople.com/tools/ukg-vs-workday) · [JitBase – UKG vs Workday WFM](https://www.jitbase.com/blog/ukg-vs-workday-workforce-management) · [TechVendorIndex](https://techvendorindex.pages.dev/compare/workday-vs-ukg-pro/) · [TrustRadius](https://trustradius.com/compare-products/ukg-pro-vs-workday-payroll-and-workforce-management) · [Workday – "unbiased review"](https://explore.workday.com/d52952/items/an-unbiased-review-of-workday-hcm-vs-ukg-pro) · [Workday Negotiations – cost](https://workdaynegotiations.pages.dev/blog/workday-vs-ukg-pro-cost/) · [Workday docs – predictive scheduling setup](https://doc.workday.com/admin-guide/en-us/human-capital-management/workday-scheduling/schedule-management-communications-and-productivit/steps--set-up-predictive-scheduling.html) · [Workday docs – predictive scheduling calculations](https://doc.workday.com/admin-guide/en-us/human-capital-management/time-tracking/time-calculations/create-predictive-scheduling-calculations.html) · [Cloudapper](https://www.cloudapper.ai/?p=174476) · [Workforce.com – predictive scheduling](https://www.workforce.com/buyers-guides/scheduling-software-for-predictive-scheduling-laws) · [Humanforce – stadium WFM](https://www.humanforce.com/us/stadium-workforce-management) · [Shifton – stadium operations](https://shifton.com/industries/stadium-operations/) · [PeopleStrong checklist](https://peoplestrong.com/?p=241719) · [Clearbridge](https://clearbridgetech.com/55-of-hr-technology-projects-miss-the-mark-and-its-almost-never-the-softwares-fault/) · [HRMS World](https://hrmsworld.com/hrms-failure-stats.html) · [HRM Asia](https://hrmasia.com/cloud-based-hcms-what-makes-for-successful-implementations/) · [Reliamag – failure-stat caution](https://reliamag.com/topics/articles/cmms-implementation-failure-rate/index.md)
