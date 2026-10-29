@@ -86,6 +86,10 @@ async def run_research(request: str) -> None:
 if __name__ == "__main__":
     asyncio.run(
         run_research(
-            #TODO: Give the system a research question with multiple distinct subtasks.
+            "Compare the three leading enterprise HCM platforms for a large "
+            "sports and entertainment employer: Workday HCM, UKG Pro, and "
+            "Oracle Fusion Cloud HCM. Cover workforce management for hourly "
+            "and seasonal staff, AI capabilities, and total cost of ownership "
+            "for each."
         )
     )
