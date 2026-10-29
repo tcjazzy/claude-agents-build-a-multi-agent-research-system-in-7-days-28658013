@@ -161,8 +161,10 @@ async def run_research(request: str) -> str:
 
 async def main():
     request = (
-          #TODO: Add a question of your choosing.
-
+        "What does the evidence say about the impact of AI agents in HR, such "
+        "as Workday Illuminate and UKG Bryte, on HR service delivery and "
+        "productivity, and what compliance risks do employers face when using "
+        "AI in high-volume hiring and workforce decisions?"
     )
     report = await run_research(request)
 
